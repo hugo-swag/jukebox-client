@@ -6,12 +6,18 @@ class Relay {
     this.socketManager = new SocketManager();
   }
 
-  createRoom(oldRoom, name){
-    this.socketManager.createRoom(oldRoom, name);
+  createRoom(newRoom, oldRoom){
+    const name = newRoom.name
+    const oldRoomName = oldRoom.name
+    this.socketManager.createRoom(name, oldRoomName);
   }
 
   joinRoom(room) {
     this.socketManager.joinRoom(room, '');
+  }
+
+  onRoomList(fn) {
+    this.socketManager.onRoomList(fn);
   }
 
 }
