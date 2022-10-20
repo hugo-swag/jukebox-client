@@ -6,6 +6,7 @@ import Causes from './components/Causes';
 import UserContext from './user-context';
 import withAuth from './WithAuth';
 import Relay from './lib/Relay';
+import SearchSongs from './components/SearchSongs';
 
 
 // const relay = new Relay();
@@ -35,6 +36,7 @@ function App() {
             <>
               <RoomsWithAuth />
               <Causes />
+              <SearchSongs />
             </>
             : <Splash></Splash>
         }

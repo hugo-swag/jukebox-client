@@ -24,6 +24,14 @@ class Relay {
     this.socketManager.onRoomList(fn);
   }
 
+  searchSong(song) {
+    this.socketManager.searchSong(song);
+  }
+
+  addSong(song) {
+    this.socketManager.addSong(song);
+  }
+
 }
 
 export default Relay;
