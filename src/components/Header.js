@@ -1,21 +1,36 @@
-import React from "react";
-import Nav from 'react-bootstrap/Nav'
+import React, { useState, useContext } from 'react';
+import { Container, Button } from 'react-bootstrap';
+import UserContext from "./../user-context";
+import SignIn from "./SignIn";
+import Signup from "./Signup";
+import Profile from './Profile';
+import Logout from './Logout';
 
 function Header() {
+  const context = useContext(UserContext);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+
+  console.log(context);
+
   return (
-    <Nav variant="tabs" defaultActiveKey="/home">
-      <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <Container>
+      {
+        context.user.isAuthenticated ?
+          <Container>
+            <Profile></Profile>
+            <Logout></Logout>
+          </Container>
+          :
+          <Container>
+            <Button onClick={() => setShowSignUp(true)}>Sign Up</Button>
+            <Button onClick={() => setShowSignIn(true)}>Sign In</Button>
+          </Container>
+      }
+
+      <Signup showModal={showSignUp} setShowModal={setShowSignUp}></Signup>
+      <SignIn showModal={showSignIn} setShowModal={setShowSignIn}></SignIn>
+    </Container>
   );
 }
 
