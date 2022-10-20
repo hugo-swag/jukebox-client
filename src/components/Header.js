@@ -4,6 +4,7 @@ import UserContext from "./../user-context";
 import SignIn from "./SignIn";
 import Signup from "./Signup";
 import Profile from './Profile';
+import Logout from './Logout';
 
 function Header() {
   const context = useContext(UserContext);
@@ -16,7 +17,10 @@ function Header() {
     <Container>
       {
         context.user.isAuthenticated ?
-          <Profile></Profile>
+          <Container>
+            <Profile></Profile>
+            <Logout></Logout>
+          </Container>
           :
           <Container>
             <Button onClick={() => setShowSignUp(true)}>Sign Up</Button>

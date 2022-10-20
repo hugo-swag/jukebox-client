@@ -5,11 +5,11 @@ import UserContext from './user-context';
 function App() {
 
   const [user, setUser] = useState({isAuthenticated: false});
-  const login = (username, token) => {
+  const login = (username, token, isAuthenticated) => {
     setUser({
       username: username,
       token: token,
-      isAuthenticated: true,
+      isAuthenticated: isAuthenticated,
     });
   }
 

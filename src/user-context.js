@@ -4,7 +4,7 @@ const userContext = React.createContext({
   username: null,
   token: null,
   isAuthenticated: false,
-  login: () => {}
+  login: () => {},
 });
 
 export default userContext;

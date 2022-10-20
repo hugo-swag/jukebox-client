@@ -23,7 +23,7 @@ export default function Signup({showModal, setShowModal}) {
   
     try {
       const response = await axios(config);
-      user.login(response.data.username, response.data.token);
+      user.login(response.data.username, response.data.token, true);
       
     } catch(e) {
       console.log(e);
