@@ -20,7 +20,7 @@ class Rooms extends Component {
     };
     this.onRoomListSent = this.onRoomListSent.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeRoom = this.handleChange.bind(this);
+    this.handleChangeRoom = this.handleChangeRoom.bind(this);
     this.handleClickCreateRoom = this.handleClickCreateRoom.bind(this);
     this.relay.onRoomList(this.onRoomListSent);
   }
