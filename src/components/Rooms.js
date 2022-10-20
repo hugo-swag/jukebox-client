@@ -8,9 +8,10 @@ function Room(props) {
 class Rooms extends Component {
   constructor(props) {
     super(props);
-    const bindIt = (fn) => {
+    let bindIt = (fn) => {
       this[fn.name] = fn.bind(this);
     }
+    bindIt = bindIt.bind(this);
     bindIt(this.onRoomListSent);
     bindIt(this.handleChange);
     bindIt(this.handleClickCreateRoom);
