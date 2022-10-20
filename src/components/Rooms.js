@@ -18,7 +18,7 @@ class Rooms extends Component {
     this.state = {
       rooms: this.props.rooms || [],
     };
-    this.onRoomListSent = this.onRoomListSent(this);
+    this.onRoomListSent = this.onRoomListSent.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeRoom = this.handleChange.bind(this);
     this.handleClickCreateRoom = this.handleClickCreateRoom.bind(this);
