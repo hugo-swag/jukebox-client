@@ -8,14 +8,9 @@ function Room(props) {
 class Rooms extends Component {
   constructor(props) {
     super(props);
-    let bindIt = (fn) => {
+    for(let fn of [this.onRoomListSent, this.handleChange, this.handleClickCreateRoom, this.handleChangeRoom]) {
       this[fn.name] = fn.bind(this);
     }
-    bindIt = bindIt.bind(this);
-    bindIt(this.onRoomListSent);
-    bindIt(this.handleChange);
-    bindIt(this.handleClickCreateRoom);
-    bindIt(this.handleChangeRoom);
     // this.socketManager = props.socketManager;
     this.relay = props.relay;
     this.state = {
