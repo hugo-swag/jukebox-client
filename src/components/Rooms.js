@@ -8,17 +8,21 @@ function Room(props) {
 class Rooms extends Component {
   constructor(props) {
     super(props);
+    /*
     for(let fn of [this.onRoomListSent, this.handleChange, this.handleClickCreateRoom, this.handleChangeRoom]) {
       this[fn.name] = fn.bind(this);
     }
+    */
     // this.socketManager = props.socketManager;
     this.relay = props.relay;
     this.state = {
       rooms: this.props.rooms || [],
     };
+    this.onRoomListSent = this.onRoomListSent(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeRoom = this.handleChange.bind(this);
+    this.handleClickCreateRoom = this.handleClickCreateRoom.bind(this);
     this.relay.onRoomList(this.onRoomListSent);
-    //this.onChange = this.onChange.bind(this);
-    //this.onClickCreateRoom = this.onClickCreateRoom.bind(this);
   }
 
   componentDidMount() {
