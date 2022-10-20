@@ -14,7 +14,7 @@ export default function SignIn({showModal, setShowModal}) {
     const config = {
       method: 'post',
       mode: 'cors',
-      url: `${process.env.REACT_APP_SERVER}/user/signin`,
+      url: `${process.env.REACT_APP_SERVER_URL}/user/signin`,
       auth: {
         username: e.target.username.value,
         password: e.target.password.value,

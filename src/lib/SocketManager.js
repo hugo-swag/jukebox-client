@@ -3,8 +3,17 @@ const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
 console.log(SOCKET_URL)
 
 class SocketManager {
-  constructor() {
-    this.socket = io(SOCKET_URL);
+  constructor(token) {
+    this.token = token;
+    this.socket = io(SOCKET_URL, {
+        auth: {
+          token: this.token,
+        },
+      });
+      this.setupListeners();
+  }
+
+  setupListeners(){
     this.socket.on('room-list', (payload) => {
       if (this.onRoomListCallback) {
         this.onRoomListCallback(payload);
@@ -23,6 +32,18 @@ class SocketManager {
         this.onReceiveSearchResultsCallback(payload);
       }
     });
+
+  }
+
+  resetSocketManager(token) {
+    this.token = token;
+    this.socket = io(SOCKET_URL, {
+        auth: {
+          token: this.token,
+        },
+      });
+    this.setupListeners();
+
   }
 
   // create or join
