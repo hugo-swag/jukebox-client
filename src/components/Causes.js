@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const INDEX_URL = () => `${SERVER_URL}/causes`;
-const CREATE_URL = () => `${SERVER_URL}/causes/new`;
-// const GET_URL = (id) => `${SERVER_URL}/causes/${id}`;
-const DELETE_URL = (id) => `${SERVER_URL}/causes/${id}`;
+const INDEX_URL = () => `${SERVER_URL}/api/v1/causes`;
+const CREATE_URL = () => `${SERVER_URL}/api/v1/causes/new`;
+// const GET_URL = (id) => `${SERVER_URL}/api/v1/causes/${id}`;
+const DELETE_URL = (id) => `${SERVER_URL}/api/v1/causes/${id}`;
 
 class CausesController {
 
