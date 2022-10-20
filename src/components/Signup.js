@@ -1,7 +1,11 @@
 import { Form, Button, Modal } from 'react-bootstrap';
+import { useContext } from 'react';
+import UserContext from '../user-context';
 import axios from 'axios';
 
 export default function Signup({showModal, setShowModal}) {
+  
+  const user = useContext(UserContext);
 
   async function handleSignup(e) {
     e.preventDefault();
@@ -19,7 +23,8 @@ export default function Signup({showModal, setShowModal}) {
   
     try {
       const response = await axios(config);
-      console.log(response.data);
+      user.login(response.data.username, response.data.token);
+      
     } catch(e) {
       console.log(e);
     }

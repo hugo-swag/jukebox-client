@@ -1,7 +1,11 @@
 import { Form, Button, Modal } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import UserContext from '../user-context';
 import axios from 'axios';
 
 export default function SignIn({showModal, setShowModal}) {
+
+  const user = useContext(UserContext);
 
   async function handleSignIn(e) {
     e.preventDefault();
@@ -19,7 +23,7 @@ export default function SignIn({showModal, setShowModal}) {
   
     try {
       const response = await axios(config);
-      console.log(response.data);
+      user.login(response.data.username, response.data.token);
     } catch(e) {
       console.log(e);
     }
@@ -28,7 +32,7 @@ export default function SignIn({showModal, setShowModal}) {
   return (
     <>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
-      <Modal.Header closeButton>Sign Up</Modal.Header>
+      <Modal.Header closeButton>Sign In</Modal.Header>
         <Form onSubmit={handleSignIn}>
           <Form.Group className="mb-3" controlId="username">
             <Form.Label>username</Form.Label>
