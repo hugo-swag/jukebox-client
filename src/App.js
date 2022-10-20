@@ -1,9 +1,7 @@
 
-import { useState } from 'react';
 
 import Header from './components/Header';
 import { useState } from 'react';
-import UserContext from './user-context';
 import Rooms from './components/Rooms';
 import Causes from './components/Causes';
 
