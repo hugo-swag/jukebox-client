@@ -2,8 +2,12 @@ import SocketManager from './SocketManager';
 
 
 class Relay {
-  constructor() {
-    this.socketManager = new SocketManager();
+  constructor(token) {
+    this.socketManager = new SocketManager(token);
+  }
+
+  resetRelay(token) {
+    this.socketManager.resetSocketManager(token);
   }
 
   createRoom(newRoom, oldRoom){

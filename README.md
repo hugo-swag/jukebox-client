@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# jukebox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Deploy
 
-## Available Scripts
+[Online Jukebox](https://hugo-swag-dev.netlify.app/)
 
-In the project directory, you can run:
+## Deployment
 
-### `npm start`
+### *How do I install the app or library?*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clone this app and install all dependencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### *How do I test the app or library?*
 
-### `npm test`
+Run "NPM test" in the terminal once all dependencies are installed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## For Applications
 
-### `npm run build`
+### *How do I run the app?*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can run the app on your local terminal.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### *How do I set up the app?*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Be sure to install all dependencies.
 
-### `npm run eject`
+## Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Write a complete set of tests for all functional units and modules
+You must open the server and, at least, one client in order to have the sockets communicating.
+Enter the following commands in separate terminals to start:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Server: [node src/Global/handleGlobal.js]
+- Driver: [node src/Driver/handleDriver.js]
+- Vendor: [node src/Vendor/handleVendor.js]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- UML
+![UML](/images/jukebox_UML.png)
 
-## Learn More
+- Wireframe
+![wireframe](/images/jukebox_wireframe.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## User Stories
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**AS A USER...**
 
-### Code Splitting
+- I want to be able to listen to a song
+- I want to be able to queue a song
+- I want to have a simple but clear UI
+- I want to be able to sign-up
+- I want to be able to securely log-in
+- I want to be able to bump a song's priority
+- I want to be able to create a room
+- I want to be able to join a room
+- I want to be able to invite users by username
+- I want to assign roles (admin, general)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributions
 
-### Analyzing the Bundle Size
+[ReactJS useContext Hook](https://www.geeksforgeeks.org/reactjs-usecontext-hook/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[Tutorial on how to set up an express server with socket.io](https://www.joezimjs.com/javascript/plugging-into-socket-io-the-basics/)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks to Jordan Yamada and Adrian Cosme-Halvorson for inspiration on how to approach some of our code.
