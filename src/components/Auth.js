@@ -6,7 +6,7 @@ import Signup from "./Signup";
 import Profile from './Profile';
 import Logout from './Logout';
 
-function Header() {
+function Auth() {
   const context = useContext(UserContext);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
@@ -34,4 +34,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Auth;
