@@ -1,21 +1,27 @@
-import React from "react";
-import Nav from 'react-bootstrap/Nav'
+import { useState } from "react";
+import { Nav } from 'react-bootstrap'
+import SignIn from "./SignIn";
+import Signup from "./Signup";
 
 function Header() {
+
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+
   return (
-    <Nav variant="tabs" defaultActiveKey="/home">
-      <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <>
+      <Nav>
+        <Nav.Item onClick={() => setShowSignUp(true)}>
+          Sign Up
+        </Nav.Item>
+        <Nav.Item onClick={() => setShowSignUp(true)}>
+          Sign In
+        </Nav.Item>
+      </Nav>
+
+      <Signup showModal={showSignUp} setShowModal={setShowSignUp}></Signup>
+      <SignIn showModal={showSignIn} setShowModal={setShowSignIn}></SignIn>
+    </>
   );
 }
 
