@@ -7,6 +7,7 @@ import UserContext from './user-context';
 import withAuth from './WithAuth';
 import Relay from './lib/Relay';
 import SearchSongs from './components/SearchSongs';
+import RoomQueue from './components/RoomQueue';
 
 
 // const relay = new Relay();
@@ -37,6 +38,7 @@ function App() {
               <RoomsWithAuth />
               <Causes />
               <SearchSongs />
+              <RoomQueue />
             </>
             : <Splash></Splash>
         }
