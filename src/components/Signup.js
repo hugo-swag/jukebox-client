@@ -3,6 +3,28 @@ import axios from 'axios';
 
 export default function Signup({showModal, setShowModal}) {
 
+  async function handleSignup(e) {
+    e.preventDefault();
+    setShowModal(false);
+  
+    const config = {
+      method: 'post',
+      mode: 'cors',
+      url: `${process.env.REACT_APP_SERVER}/user/signup`,
+      data: {
+        username: e.target.username.value,
+        password: e.target.password.value,
+      },
+    }
+  
+    try {
+      const response = await axios(config);
+      console.log(response.data);
+    } catch(e) {
+      console.log(e);
+    }
+  }
+
   return (
     <>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -25,27 +47,4 @@ export default function Signup({showModal, setShowModal}) {
       </Modal>
     </>
   )
-}
-
-async function handleSignup(e) {
-  e.preventDefault();
-
-  console.log(e);
-
-  const config = {
-    method: 'post',
-    mode: 'cors',
-    url: `${process.env.REACT_APP_SERVER}/user/signup`,
-    data: {
-      username: e.target.username.value,
-      password: e.target.password.value,
-    },
-  }
-
-  try {
-    const response = await axios(config);
-    console.log(response.data);
-  } catch(e) {
-    console.log(e);
-  }
 }
