@@ -1,7 +1,9 @@
 
-import Splash from './components/Splash';
 import { useState } from 'react';
+import Splash from './components/Splash';
+import Header from './components/Header';
 import Rooms from './components/Rooms';
+import RoomList from './components/RoomList';
 import Causes from './components/Causes';
 import UserContext from './user-context';
 import withAuth from './WithAuth';
@@ -27,19 +29,23 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{ ...{ user: user, login: login, relay } }}>
-      <div>
-        {
-          user.isAuthenticated
-            ?
-            <>
-              <RoomsWithAuth />
-              <Causes />
-            </>
-            : <Splash></Splash>
-        }
-      </div>
-    </UserContext.Provider>
+    <>
+      <UserContext.Provider value={{ ...{ user: user, login: login, relay } }}>
+        <div>
+          {
+            user.isAuthenticated
+              ?
+              <>
+                <Header></Header>
+                <RoomList></RoomList>
+                <RoomsWithAuth />
+                <Causes />
+              </>
+              : <Splash></Splash>
+          }
+        </div>
+      </UserContext.Provider>
+    </>
   );
 }
 

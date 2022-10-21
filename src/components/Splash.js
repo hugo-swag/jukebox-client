@@ -18,9 +18,8 @@ function Splash() {
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
               <label for="floatingPassword">Password</label>
             </div>
-
-            <div class="auth mb-3">
-              <Auth className="auth mb-2"></Auth>
+            <div>
+              <Auth></Auth>
               {/* <button class="w-100 btn btn-lg btn-primary m-1" type="submit">Sign in</button>
               <button class="w-100 btn btn-lg btn-primary m-1" type="submit">Sign up</button> */}
             </div>
