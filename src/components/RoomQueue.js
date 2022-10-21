@@ -9,25 +9,25 @@ export default function RoomQueue({changeUri}) {
   const [queue, setQueue] = useState([]);
   const [nowPlaying, setNowPlaying] = useState({})
 
-  function handleUpdateQueue(updatedQueue) {
-    setQueue(updatedQueue.songList);
-  }
 
-  function handlePlayAndUpdateQueue(updatedQueue) {
-    if(updatedQueue?.songList[0]) {
-      setQueue(updatedQueue.songList);
-      setNowPlaying(updatedQueue.songList[0]);
-      changeUri(updatedQueue.songList[0].uri);
-    } else {
-      setNowPlaying(null);
-    }
-
-  }
   useEffect(
     () => {
+      function handleUpdateQueue(updatedQueue) {
+        setQueue(updatedQueue.songList);
+      }
+      function handlePlayAndUpdateQueue(updatedQueue) {
+        if(updatedQueue?.songList[0]) {
+          setQueue(updatedQueue.songList);
+          setNowPlaying(updatedQueue.songList[0]);
+          changeUri(updatedQueue.songList[0].uri);
+        } else {
+          setNowPlaying(null);
+        }
+      }
       context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
       context.relay.socketManager.onUpdatePlayingAndQueue(handlePlayAndUpdateQueue);
-    }, []
+    // eslint-disable-next-line
+    }, [context.relay.socketManager]
   )
 
   function handleBid(e, song) {
