@@ -19,6 +19,7 @@ class Rooms extends Component {
     this.relay = props.relay;
     this.state = {
       rooms: this.props.rooms || [],
+      newRoomName: ''
     };
     this.onRoomListSent = this.onRoomListSent.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,13 +52,12 @@ class Rooms extends Component {
       name: this.state.newRoomName,
       causeId: null
     }
-    this.setState({...this.state, currentRoom: newRoom});
+    this.setState({...this.state, currentRoom: newRoom, newRoomName: ''});
     this.relay.createRoom(newRoom, this.state.currentRoom);
   }
 
   handleClickCreateRoom(e){
     e.preventDefault();
-    this.setState({...this.state, newRoomName: ''})
     this.createRoom();
   }
 
@@ -75,7 +75,7 @@ class Rooms extends Component {
         <div className="container-fluid py-5">
           <h1 className="display-5 fw-bold">Welcome to Your Party</h1>
           <p className="col-md-8 fs-4">Create a new Room here. Or select one from below.</p>
-          <input className="flex-md-nowrap p-3 my-3 form-control form-control-dark w-100" type="text" placeholder="Create a Room" aria-label="Create a room" id="roomName" name="newRoomName" onChange={this.handleChange} />
+          <input className="flex-md-nowrap p-3 my-3 form-control form-control-dark w-100" type="text" placeholder="Create a Room" aria-label="Create a room" id="roomName" name="newRoomName" value={this.state.newRoomName} onChange={this.handleChange} />
           <button className="btn btn-primary btn-lg" type="button" onClick={this.handleClickCreateRoom} id="createRoomSubmit">Create</button>
           <hr/>
           <div className="container">
