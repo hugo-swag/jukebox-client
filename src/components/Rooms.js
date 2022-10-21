@@ -106,8 +106,10 @@ class Rooms extends Component {
                     ))
                   }
                 </ul>
-                <SearchSongs room={this.state.currentRoom?.name}/>
-                <RoomQueue changeUri={this.changeUri}/>
+                <div className="container">
+                  <SearchSongs room={this.state.currentRoom?.name}/>
+                  <RoomQueue changeUri={this.changeUri}/>
+                </div>
               </Card.Body>
             </Card>
           </div>

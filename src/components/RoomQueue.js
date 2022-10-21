@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import UserContext from '../user-context';
+import './RoomQueue.css';
 
 export default function RoomQueue({changeUri}) {
   const context = useContext(UserContext);
@@ -14,7 +15,7 @@ export default function RoomQueue({changeUri}) {
   context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
   function handlePlayAndUpdateQueue(updatedQueue) {
-    if(updatedQueue.songList[0]) {
+    if(updatedQueue?.songList[0]) {
       setQueue(updatedQueue.songList);
       setNowPlaying(updatedQueue.songList[0]);
       changeUri(updatedQueue.songList[0].uri);
@@ -43,20 +44,22 @@ export default function RoomQueue({changeUri}) {
             :
             <h2>Add Songs to the Queue to Play Music</h2>
           }
+          <div>
           {
-            queue.map(song => {
+            queue.map((song) => {
               return (
-                <Form key={song.songId} onSubmit={(e) => handleBid(e, song)}>
+                <Form className="playlist" key={song.songId} onSubmit={(e) => handleBid(e, song)}>
                   <Form.Text>{song.name} by {song.artist}</Form.Text>
-                  <Form.Group className="mb-3" controlId="bid">
+                  <Form.Group className="mb-3 playlist-bid" controlId="bid">
                     <Form.Label>Bid</Form.Label>
                     <Form.Control type="number" placeholder="bid"/>
+                    <Button variant='primary' type='submit'>Bid</Button>
                   </Form.Group>
-                  <Button variant='primary' type='submit'>Bid</Button>
                 </Form>
               )
             })
           }
+          </div>
         </>
       }
     </>
