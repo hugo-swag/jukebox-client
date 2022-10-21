@@ -47,8 +47,12 @@ class SocketManager {
   }
 
   // create or join
-  createRoom(roomName, oldRoom) {
-    this.socket.emit('create-room', { currentRoom: oldRoom, newRoom: roomName });
+  createRoom(newRoomName, oldRoomName, causeForRoom ) {
+    const payload = {
+      currentRoom: oldRoomName, newRoom: newRoomName, causeForRoom
+    };
+    console.log(payload);
+    this.socket.emit('create-room', payload);
   }
 
   joinRoom(room) {
