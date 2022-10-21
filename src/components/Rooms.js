@@ -38,9 +38,7 @@ class Rooms extends Component {
   }
 
   onRoomListSent(roomList) {
-    console.log(roomList);
     const rooms = roomList.map((name, id) => ({name, id}));
-    console.log(rooms)
     this.setState({...this.state, rooms});
   }
 

@@ -14,16 +14,27 @@ export default function RoomQueue() {
   }
   context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
-  // function handlePlayAndUpdateQueue(updatedQueue) {
-  //   console.log(updatedQueue);
-  // }
-  // context.relay.socketManager.onUpdatePlayingAndQueue(handlePlayAndUpdateQueue);
+  function handlePlayAndUpdateQueue(updatedQueue) {
+    console.log(updatedQueue.songList);
+    setQueue(updatedQueue.songList);
+    console.log(queue[0]);
+    if(queue[0]) {
+      setNowPlaying(queue[0]);
+      let audio = new Audio(queue[0].uri);
+      audio.muted = false;
+      audio.play();
+    } else {
+      setNowPlaying(null);
+    }
+
+  }
+  context.relay.socketManager.onUpdatePlayingAndQueue(handlePlayAndUpdateQueue);
 
   function handleBid(e, song) {
     e.preventDefault();
     song.bid += e.target.bid.value;
   }
-  context.relay.socketManager.bidOnSong(handleBid);
+  // context.relay.socketManager.bidOnSong(handleBid);
 
   return (
     <>
@@ -31,7 +42,12 @@ export default function RoomQueue() {
       {
         queue.length !== 0 &&
         <>
-          <h2>Currently Playing...</h2>
+          {
+            nowPlaying ?
+            <h2>Currently Playing {nowPlaying.name} by {nowPlaying.artist}</h2>
+            :
+            <h2>Add Songs to the Queue to Play Music</h2>
+          }
           {
             queue.map(song => {
               return (
