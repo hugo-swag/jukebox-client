@@ -30,8 +30,8 @@ export default function RoomQueue() {
   function handleBid(e, song) {
     e.preventDefault();
     song.bid += e.target.bid.value;
+    context.relay.bidOnSong(song);
   }
-  // context.relay.socketManager.bidOnSong(handleBid);
 
   return (
     <>
