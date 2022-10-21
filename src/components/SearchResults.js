@@ -10,7 +10,7 @@ export default function SearchResults({setShowResults, searchResults, room}) {
     setShowResults(false);
     song.bid = 0;
     song.room = room;
-    song.songLength = 25000;
+    song.songLength = 30000;
     context.relay.addSong(song);
   }
 
