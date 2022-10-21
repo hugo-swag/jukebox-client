@@ -47,7 +47,6 @@ function App() {
                 <WrapInModal title="Profile" isShowing={profileIsOpen} handleClose={()=>setProfileIsOpen(false)}>
                 <Profile/>
               </WrapInModal>
-                <RoomList></RoomList>
                 <RoomsWithAuth />
               </>
               : <Splash></Splash>
