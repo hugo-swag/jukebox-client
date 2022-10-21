@@ -102,10 +102,10 @@ class Rooms extends Component {
         </form>
         <h3 class="mb-3" id="currentRoom">Current Room: {this.state.currentRoom?.name}</h3>
         <div class="d-flex justify-content-between">
-          <ul class="list-group d-grid col-4" id="rooms">
+          <ul class="list-group d-grid col-6" id="rooms">
             {
               this.state.rooms.map((room) => (
-                <button type="button" class="list-group-item list-group-item-action" key={room.id}>< Room room={room} handleChangeRoom={this.handleChangeRoom}></ Room></button>
+                <li type="button" class="list-group-item list-group-item-action" key={room.id}>< Room room={room} handleChangeRoom={this.handleChangeRoom}></ Room></li>
               ))
             }
           </ul>
