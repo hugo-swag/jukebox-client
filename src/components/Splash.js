@@ -17,11 +17,8 @@ function Splash() {
               <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-
-            <div className="auth mb-3">
-              <Auth className="auth mb-2"></Auth>
-              {/* <button class="w-100 btn btn-lg btn-primary m-1" type="submit">Sign in</button>
-              <button class="w-100 btn btn-lg btn-primary m-1" type="submit">Sign up</button> */}
+            <div>
+              <Auth></Auth>
             </div>
             <p className="mt-5 mb-3 text-muted">&copy; 2022</p>
           </form>

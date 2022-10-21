@@ -1,8 +1,9 @@
 
-import Splash from './components/Splash';
 import { useState } from 'react';
+import Splash from './components/Splash';
+import Header from './components/Header';
 import Rooms from './components/Rooms';
-// import Causes from './components/Causes';
+import RoomList from './components/RoomList';
 import Profile from './components/Profile';
 import UserContext from './user-context';
 import withAuth from './WithAuth';
@@ -19,7 +20,6 @@ function App() {
 
   const [user, setUser] = useState({ isAuthenticated: false });
   const [profileIsOpen, setProfileIsOpen] = useState(false);
-  //const ProfileInModal = wrapInModal(<Profile />, profileIsOpen, () => setProfileIsOpen(false) );
   const login = (username, token, isAuthenticated) => {
     relay.resetRelay(token);
     setUser({
@@ -31,25 +31,30 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{ ...{ user: user, login: login, relay } }}>
-      <div>
-        {
-          user.isAuthenticated
-            ?
-            <>
-              <a href="#open-profile" onClick={(e)=>{
-                e.preventDefault();
-                setProfileIsOpen(true);
-              }}>My Profile</a>
-              <WrapInModal title="Profile" isShowing={profileIsOpen} handleClose={()=>setProfileIsOpen(false)}>
+    <>
+      <UserContext.Provider value={{ ...{ user: user, login: login, relay } }}>
+        <div>
+          {
+            user.isAuthenticated
+              ?
+              <>
+                <Header></Header>
+
+                <a href="#open-profile" onClick={(e)=>{
+                  e.preventDefault();
+                  setProfileIsOpen(true);
+                }}>My Profile</a>
+                <WrapInModal title="Profile" isShowing={profileIsOpen} handleClose={()=>setProfileIsOpen(false)}>
                 <Profile/>
               </WrapInModal>
-              <RoomsWithAuth />
-            </>
-            : <Splash></Splash>
-        }
-      </div>
-    </UserContext.Provider>
+                <RoomList></RoomList>
+                <RoomsWithAuth />
+              </>
+              : <Splash></Splash>
+          }
+        </div>
+      </UserContext.Provider>
+    </>
   );
 }
 
