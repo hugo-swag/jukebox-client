@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Splash from './components/Splash';
 import Header from './components/Header';
 import Rooms from './components/Rooms';
-import RoomList from './components/RoomList';
 import Profile from './components/Profile';
 import UserContext from './user-context';
 import withAuth from './WithAuth';
