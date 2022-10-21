@@ -32,13 +32,14 @@ export default function RoomQueue({changeUri}) {
 
   function handleBid(e, song) {
     e.preventDefault();
-    song.bid += e.target.bid.value;
+    song.bid += parseInt(e.target.bid.value, 10);
     context.relay.bidOnSong(song);
+    context.user.credits -= parseInt(e.target.bid.value, 10);
   }
 
   return (
     <>
-      <h1>Music queue</h1>
+      <h1>Music queue (You have {context.user.credits} tokens.)</h1>
       {
         queue.length !== 0 &&
         <>
@@ -53,7 +54,7 @@ export default function RoomQueue({changeUri}) {
             queue.map((song) => {
               return (
                 <Form className="playlist" key={song.songId} onSubmit={(e) => handleBid(e, song)}>
-                  <Form.Text>{song.name} by {song.artist}</Form.Text>
+                  <Form.Text>{song.name} by {song.artist} <span className="bid-display">(Bid: {song.bid})</span></Form.Text>
                   <Form.Group className="mb-3 playlist-bid" controlId="bid">
                     <Form.Label>Bid</Form.Label>
                     <Form.Control type="number" placeholder="bid"/>

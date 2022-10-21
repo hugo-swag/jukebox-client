@@ -24,7 +24,8 @@ function App() {
     setUser({
       username: username,
       token: token,
-      isAuthenticated: isAuthenticated
+      isAuthenticated: isAuthenticated,
+      credits: 100
 
     });
   }
