@@ -17,11 +17,24 @@ class Relay {
   }
 
   joinRoom(room) {
-    this.socketManager.joinRoom(room, '');
+    console.log(room);
+    this.socketManager.joinRoom(room);
   }
 
   onRoomList(fn) {
     this.socketManager.onRoomList(fn);
+  }
+
+  searchSong(song) {
+    this.socketManager.searchSong(song);
+  }
+
+  addSong(song) {
+    this.socketManager.addSong(song);
+  }
+
+  bidOnSong(song) {
+    this.socketManager.bidOnSong(song);
   }
 
 }
