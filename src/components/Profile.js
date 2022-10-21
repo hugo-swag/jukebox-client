@@ -9,7 +9,7 @@ const Profile = () => {
   return (
     <>
       <h1>{user.user.username}</h1>
-      <p>You have {user.user.amount || 0 } Tokens. </p>
+      <p>You have {user?.user.credits || 0 } Tokens. </p>
       <Causes />
     </>
   )

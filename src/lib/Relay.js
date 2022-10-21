@@ -13,7 +13,7 @@ class Relay {
   createRoom(newRoom, oldRoom){
     const name = newRoom.name
     const oldRoomName = oldRoom.name
-    this.socketManager.createRoom(name, oldRoomName);
+    this.socketManager.createRoom(name, oldRoomName, newRoom.causeForRoom);
   }
 
   joinRoom(room) {
