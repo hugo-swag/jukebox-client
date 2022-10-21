@@ -2,7 +2,7 @@ import { ListGroup } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import UserContext from './../user-context';
 
-export default function SearchResults({setShowResults, searchResults, room}) {
+export default function SearchResults({ setShowResults, searchResults, room }) {
 
   const context = useContext(UserContext);
 
@@ -20,8 +20,8 @@ export default function SearchResults({setShowResults, searchResults, room}) {
         searchResults.map(song => {
           return (
             <>
-              <ListGroup.Item key={song.songId} onClick={() => handleAddSong(song)}>
-                {song.name} by {song.artist}              
+              <ListGroup.Item key={song.songId} action onClick={() => handleAddSong(song)}>
+                {song.name} by {song.artist}
               </ListGroup.Item>
             </>
           )
