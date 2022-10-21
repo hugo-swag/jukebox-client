@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import UserContext from '../user-context';
 import axios from 'axios';
 
-export default function Signup({showModal, setShowModal}) {
-  
+export default function Signup({ showModal, setShowModal }) {
+
   const user = useContext(UserContext);
 
   async function handleSignup(e) {
     e.preventDefault();
     setShowModal(false);
-  
+
     const config = {
       method: 'post',
       mode: 'cors',
@@ -20,12 +20,12 @@ export default function Signup({showModal, setShowModal}) {
         password: e.target.password.value,
       },
     }
-  
+
     try {
       const response = await axios(config);
       user.login(response.data.username, response.data.token, true);
-      
-    } catch(e) {
+
+    } catch (e) {
       console.log(e);
     }
   }
@@ -35,17 +35,17 @@ export default function Signup({showModal, setShowModal}) {
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>Sign Up</Modal.Header>
         <Form onSubmit={handleSignup}>
-          <Form.Group className="mb-3" controlId="username">
+          <Form.Group className="p-3 mb-3" controlId="username">
             <Form.Label>username</Form.Label>
             <Form.Control type="text" placeholder="Enter username" />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="password">
+          <Form.Group className="p-3 mb-3" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button className="m-3" variant="primary" type="submit">
             Submit
           </Button>
         </Form>

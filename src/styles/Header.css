@@ -106,7 +106,7 @@ body {
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
     url('../img/juke_mast.jpg');
-  height: 88vh;
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

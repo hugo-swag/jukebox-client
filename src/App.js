@@ -2,11 +2,8 @@
 import { useState } from 'react';
 import Splash from './components/Splash';
 import Header from './components/Header';
-import Rooms from './components/Rooms';
-import RoomList from './components/RoomList';
 import Causes from './components/Causes';
 import UserContext from './user-context';
-import withAuth from './WithAuth';
 import Relay from './lib/Relay';
 
 
@@ -14,7 +11,7 @@ import Relay from './lib/Relay';
 
 const relay = new Relay()
 
-const RoomsWithAuth = withAuth(Rooms);
+// const RoomsWithAuth = withAuth(Rooms);
 function App() {
 
   const [user, setUser] = useState({ isAuthenticated: false });
@@ -24,7 +21,6 @@ function App() {
       username: username,
       token: token,
       isAuthenticated: isAuthenticated
-
     });
   }
 
@@ -37,8 +33,6 @@ function App() {
               ?
               <>
                 <Header></Header>
-                <RoomList></RoomList>
-                <RoomsWithAuth />
                 <Causes />
               </>
               : <Splash></Splash>
