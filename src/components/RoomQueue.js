@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import UserContext from '../user-context';
 import './RoomQueue.css';
@@ -12,7 +12,6 @@ export default function RoomQueue({changeUri}) {
   function handleUpdateQueue(updatedQueue) {
     setQueue(updatedQueue.songList);
   }
-  context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
   function handlePlayAndUpdateQueue(updatedQueue) {
     if(updatedQueue?.songList[0]) {
@@ -24,7 +23,12 @@ export default function RoomQueue({changeUri}) {
     }
 
   }
-  context.relay.socketManager.onUpdatePlayingAndQueue(handlePlayAndUpdateQueue);
+  useEffect(
+    () => {
+      context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
+      context.relay.socketManager.onUpdatePlayingAndQueue(handlePlayAndUpdateQueue);
+    }, []
+  )
 
   function handleBid(e, song) {
     e.preventDefault();
