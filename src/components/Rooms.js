@@ -1,7 +1,13 @@
 import { Component } from "react";
+import RoomQueue from "./RoomQueue";
+import SearchSongs from "./SearchSongs";
 
 function Room(props) {
-  return ( <span onClick={()=>props.handleChangeRoom(props.room)}>{props.room.name}</span> );
+  return ( 
+    <>
+      <span onClick={()=>props.handleChangeRoom(props.room)}>{props.room.name}</span>
+    </>
+  );
 }
 
 
@@ -79,6 +85,8 @@ class Rooms extends Component {
           ))
         }
       </ul>
+      <SearchSongs room={this.state.currentRoom?.name}/>
+      <RoomQueue />
     </div>
     );
   }

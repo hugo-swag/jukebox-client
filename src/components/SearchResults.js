@@ -2,14 +2,15 @@ import { ListGroup, Button } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import UserContext from './../user-context';
 
-export default function SearchResults({setShowResults, searchResults}) {
+export default function SearchResults({setShowResults, searchResults, room}) {
 
   const context = useContext(UserContext);
 
   function handleAddSong(song) {
     setShowResults(false);
     song.bid = 0;
-    song.room = 'main';
+    console.log(room);
+    song.room = room;
     console.log(song);
     context.relay.addSong(song);
   }

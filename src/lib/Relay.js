@@ -32,6 +32,10 @@ class Relay {
     this.socketManager.addSong(song);
   }
 
+  bidOnSong(song) {
+    this.socketManager.bidOnSong(song);
+  }
+
 }
 
 export default Relay;

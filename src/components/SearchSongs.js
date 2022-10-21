@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import userContext from '../user-context';
 import SearchResults from './SearchResults';
 
-export default function SearchSong() {
+export default function SearchSong({room}) {
 
   const context = useContext(userContext);
 
@@ -52,6 +52,7 @@ export default function SearchSong() {
           searchResults={searchResults}
           showSearchResults={showResults}
           setShowResults={setShowResults}
+          room={room}
         />
       }
     </>
