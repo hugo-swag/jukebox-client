@@ -19,11 +19,9 @@ export default function SearchResults({setShowResults, searchResults, room}) {
       {
         searchResults.map(song => {
           return (
-            <>
               <ListGroup.Item key={song.songId} onClick={() => handleAddSong(song)}>
                 {song.name} by {song.artist}              
               </ListGroup.Item>
-            </>
           )
         })
       }
