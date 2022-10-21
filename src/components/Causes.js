@@ -16,7 +16,6 @@ class CausesController {
 
   async getCauses(){
     const resp = await axios.get(INDEX_URL());
-    console.log(resp.data);
     return resp.data;
   }
 

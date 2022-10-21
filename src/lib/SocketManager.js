@@ -51,8 +51,8 @@ class SocketManager {
     this.socket.emit('create-room', { currentRoom: oldRoom, newRoom: roomName });
   }
 
-  joinRoom(roomName, oldRoom) {
-    this.socket.emit('join-room', { currentRoom: oldRoom, newRoom: roomName });
+  joinRoom(room) {
+    this.socket.emit('join-room', { currentRoom: room.currentRoom, newRoom: room.newRoom });
   }
 
   // song object

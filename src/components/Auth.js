@@ -13,8 +13,6 @@ function Auth() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
 
-  console.log(context);
-
   return (
     <div>
       {
