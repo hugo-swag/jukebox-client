@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import UserContext from '../user-context';
 
-export default function RoomQueue() {
+export default function RoomQueue({changeUri}) {
   const context = useContext(UserContext);
 
   const [queue, setQueue] = useState([]);
@@ -14,13 +14,10 @@ export default function RoomQueue() {
   context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
   function handlePlayAndUpdateQueue(updatedQueue) {
-    console.log(updatedQueue);
-    setQueue(updatedQueue.songList);
     if(updatedQueue.songList[0]) {
+      setQueue(updatedQueue.songList);
       setNowPlaying(updatedQueue.songList[0]);
-      let audio = new Audio(updatedQueue.songList[0].uri);
-      audio.muted = false;
-      audio.play();
+      changeUri(updatedQueue.songList[0].uri);
     } else {
       setNowPlaying(null);
     }

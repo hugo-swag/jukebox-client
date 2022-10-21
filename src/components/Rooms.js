@@ -21,13 +21,16 @@ class Rooms extends Component {
     */
     // this.socketManager = props.socketManager;
     this.relay = props.relay;
+    this.audio = new Audio();
     this.state = {
       rooms: this.props.rooms || [],
+      uri: '',
     };
     this.onRoomListSent = this.onRoomListSent.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeRoom = this.handleChangeRoom.bind(this);
     this.handleClickCreateRoom = this.handleClickCreateRoom.bind(this);
+    this.changeUri = this.changeUri.bind(this);
     this.relay.onRoomList(this.onRoomListSent);
   }
 
@@ -49,6 +52,7 @@ class Rooms extends Component {
   }
 
   createRoom(){
+    this.audio.pause();
     const newRoom = {
       name: this.state.newRoomName,
       causeId: null
@@ -63,10 +67,15 @@ class Rooms extends Component {
   }
 
   handleChangeRoom(newRoom) {
-    console.log(this.state.currentRoom.name);
-    console.log(newRoom);
+    this.audio.pause();
     this.relay.joinRoom({currentRoom: this.state.currentRoom.name, newRoom: newRoom.name});
     this.setState({...this.state, currentRoom: newRoom});
+  }
+
+  changeUri(uri) {
+    this.setState({uri: uri});
+    this.audio = new Audio(uri);
+    this.audio.play();
   }
   
 
@@ -88,7 +97,7 @@ class Rooms extends Component {
         }
       </ul>
       <SearchSongs room={this.state.currentRoom?.name}/>
-      <RoomQueue />
+      <RoomQueue changeUri={this.changeUri}/>
     </div>
     );
   }
