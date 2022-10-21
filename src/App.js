@@ -2,10 +2,12 @@
 import Splash from './components/Splash';
 import { useState } from 'react';
 import Rooms from './components/Rooms';
-import Causes from './components/Causes';
+// import Causes from './components/Causes';
+import Profile from './components/Profile';
 import UserContext from './user-context';
 import withAuth from './WithAuth';
 import Relay from './lib/Relay';
+import WrapInModal from './components/wrapInModal';
 
 
 // const relay = new Relay();
@@ -16,6 +18,8 @@ const RoomsWithAuth = withAuth(Rooms);
 function App() {
 
   const [user, setUser] = useState({ isAuthenticated: false });
+  const [profileIsOpen, setProfileIsOpen] = useState(false);
+  //const ProfileInModal = wrapInModal(<Profile />, profileIsOpen, () => setProfileIsOpen(false) );
   const login = (username, token, isAuthenticated) => {
     relay.resetRelay(token);
     setUser({
@@ -33,8 +37,14 @@ function App() {
           user.isAuthenticated
             ?
             <>
+              <a href="#open-profile" onClick={(e)=>{
+                e.preventDefault();
+                setProfileIsOpen(true);
+              }}>My Profile</a>
+              <WrapInModal title="Profile" isShowing={profileIsOpen} handleClose={()=>setProfileIsOpen(false)}>
+                <Profile/>
+              </WrapInModal>
               <RoomsWithAuth />
-              <Causes />
             </>
             : <Splash></Splash>
         }
