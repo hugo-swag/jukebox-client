@@ -9,18 +9,15 @@ export default function RoomQueue() {
   const [nowPlaying, setNowPlaying] = useState({})
 
   function handleUpdateQueue(updatedQueue) {
-    console.log(updatedQueue.songList);
     setQueue(updatedQueue.songList);
   }
   context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
   function handlePlayAndUpdateQueue(updatedQueue) {
-    console.log(updatedQueue.songList);
     setQueue(updatedQueue.songList);
-    console.log(queue[0]);
-    if(queue[0]) {
-      setNowPlaying(queue[0]);
-      let audio = new Audio(queue[0].uri);
+    if(updatedQueue.songList[0]) {
+      setNowPlaying(updatedQueue.songList[0]);
+      let audio = new Audio(updatedQueue.songList[0].uri);
       audio.muted = false;
       audio.play();
     } else {
