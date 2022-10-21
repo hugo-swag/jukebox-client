@@ -17,7 +17,8 @@ class Relay {
   }
 
   joinRoom(room) {
-    this.socketManager.joinRoom(room, '');
+    console.log(room);
+    this.socketManager.joinRoom(room);
   }
 
   onRoomList(fn) {

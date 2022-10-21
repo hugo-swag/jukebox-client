@@ -14,6 +14,7 @@ export default function RoomQueue() {
   context.relay.socketManager.onUpdateQueue(handleUpdateQueue);
 
   function handlePlayAndUpdateQueue(updatedQueue) {
+    console.log(updatedQueue);
     setQueue(updatedQueue.songList);
     if(updatedQueue.songList[0]) {
       setNowPlaying(updatedQueue.songList[0]);

@@ -63,8 +63,12 @@ class Rooms extends Component {
   }
 
   handleChangeRoom(newRoom) {
+    console.log(this.state.currentRoom.name);
+    console.log(newRoom);
+    this.relay.joinRoom({currentRoom: this.state.currentRoom.name, newRoom: newRoom.name});
     this.setState({...this.state, currentRoom: newRoom});
   }
+  
 
   render() { 
     return ( 
