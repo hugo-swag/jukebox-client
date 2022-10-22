@@ -1,8 +1,4 @@
-import Rooms from './Rooms';
-import withAuth from '../withAuth';
 import '../styles/Header.css';
-
-const RoomsWithAuth = withAuth(Rooms);
 
 function Header() {
   return (
