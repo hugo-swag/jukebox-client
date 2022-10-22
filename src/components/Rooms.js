@@ -5,7 +5,7 @@ import RoomQueue from "./RoomQueue";
 import SearchSongs from "./SearchSongs";
 
 function Room(props) {
-  return ( 
+  return (
     <>
       <span onClick={()=>props.handleChangeRoom(props.room)}>{props.room.name} (Raising funds for: {props.room.causeForRoom})</span>
     </>
@@ -41,7 +41,7 @@ class Rooms extends Component {
   componentDidMount() {
     const mainRoom = 'main'
     this.relay.joinRoom(mainRoom);
-    this.setState({...this.state, currentRoom: {name: mainRoom}});
+    this.setState({ ...this.state, currentRoom: { name: mainRoom } });
   }
 
   onRoomListSent(roomList) {
@@ -49,13 +49,13 @@ class Rooms extends Component {
     this.setState({...this.state, rooms: roomList});
   }
 
-  handleChange(e){
+  handleChange(e) {
     const changed = e.target.value;
     const name = e.target.name;
-    this.setState({...this.state, [name]: changed});
+    this.setState({ ...this.state, [name]: changed });
   }
 
-  createRoom(){
+  createRoom() {
     this.audio.pause();
     const newRoom = {
       name: this.state.newRoomName,
@@ -66,23 +66,22 @@ class Rooms extends Component {
     this.relay.createRoom(newRoom, this.state.currentRoom);
   }
 
-  handleClickCreateRoom(e){
+  handleClickCreateRoom(e) {
     e.preventDefault();
     this.createRoom();
   }
 
   handleChangeRoom(newRoom) {
     this.audio.pause();
-    this.relay.joinRoom({currentRoom: this.state.currentRoom.name, newRoom: newRoom.name});
-    this.setState({...this.state, currentRoom: newRoom});
+    this.relay.joinRoom({ currentRoom: this.state.currentRoom.name, newRoom: newRoom.name });
+    this.setState({ ...this.state, currentRoom: newRoom });
   }
 
   changeUri(uri) {
-    this.setState({uri: uri});
+    this.setState({ uri: uri });
     this.audio = new Audio(uri);
     this.audio.play();
   }
-  
 
   render() { 
     return ( 
@@ -122,5 +121,5 @@ class Rooms extends Component {
     );
   }
 }
- 
+
 export default Rooms;

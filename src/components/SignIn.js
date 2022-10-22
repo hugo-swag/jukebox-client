@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import UserContext from '../user-context';
 import axios from 'axios';
 
-export default function SignIn({showModal, setShowModal}) {
+export default function SignIn({ showModal, setShowModal }) {
 
   const user = useContext(UserContext);
 
@@ -20,11 +20,11 @@ export default function SignIn({showModal, setShowModal}) {
         password: e.target.password.value,
       },
     }
-  
+
     try {
       const response = await axios(config);
       user.login(response.data.username, response.data.token, true);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }

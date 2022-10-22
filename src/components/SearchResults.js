@@ -2,7 +2,7 @@ import { ListGroup } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import UserContext from './../user-context';
 
-export default function SearchResults({setShowResults, searchResults, room}) {
+export default function SearchResults({ setShowResults, searchResults, room }) {
 
   const context = useContext(UserContext);
 

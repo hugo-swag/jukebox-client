@@ -10,6 +10,14 @@ function Splash() {
           <form>
             <img className="mb-4" src={Logo} alt="" width="128" height="128" />
             <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+            {/* <div className="form-floating">
+              <input type="text" className="form-control" id="floatingInput" placeholder="Your User Name" />
+              <label for="floatingInput">User Name</label>
+            </div>
+            <div className="form-floating">
+              <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+              <label for="floatingPassword">Password</label>
+            </div> */}
             <div>
               <Auth></Auth>
             </div>

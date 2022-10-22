@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import userContext from '../user-context';
 import SearchResults from './SearchResults';
 
-export default function SearchSong({room}) {
+export default function SearchSong({ room }) {
 
   const context = useContext(userContext);
 
@@ -31,18 +31,18 @@ export default function SearchSong({room}) {
   return (
     <>
       <Form onSubmit={handleSongSearch}>
-        <Form.Group className="mb-3" controlId="songName">
+        <Form.Group className="col-8 mb-3" controlId="songName">
           <Form.Label>Song Name</Form.Label>
           <Form.Control type="text" placeholder="Enter Song Name" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="artist">
+        <Form.Group className="col-8 mb-3" controlId="artist">
           <Form.Label>Artist</Form.Label>
           <Form.Control type="text" placeholder="Enter Artist" />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
+        <Button variant="primary" type="submit" className="my-3 btn-lg">
+          ▶
         </Button>
       </Form>
 

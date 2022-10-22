@@ -5,12 +5,10 @@ import Header from './components/Header';
 import Rooms from './components/Rooms';
 import Profile from './components/Profile';
 import UserContext from './user-context';
-import withAuth from './WithAuth';
 import Relay from './lib/Relay';
 import WrapInModal from './components/wrapInModal';
+import withAuth from './withAuth';
 
-
-// const relay = new Relay();
 
 const relay = new Relay()
 
@@ -45,8 +43,8 @@ function App() {
                   setProfileIsOpen(true);
                 }}>My Profile</a>
                 <WrapInModal title="Profile" isShowing={profileIsOpen} handleClose={()=>setProfileIsOpen(false)}>
-                <Profile/>
-              </WrapInModal>
+                  <Profile/>
+                </WrapInModal>
                 <RoomsWithAuth />
               </>
               : <Splash></Splash>
