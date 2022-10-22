@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import UserContext from '../user-context';
 import axios from 'axios';
 
-export default function Signup({showModal, setShowModal}) {
-  
+export default function Signup({ showModal, setShowModal }) {
+
   const user = useContext(UserContext);
 
   async function handleSignup(e) {
     e.preventDefault();
     setShowModal(false);
-  
+
     const config = {
       method: 'post',
       mode: 'cors',
@@ -20,12 +20,12 @@ export default function Signup({showModal, setShowModal}) {
         password: e.target.password.value,
       },
     }
-  
+
     try {
       const response = await axios(config);
       user.login(response.data.username, response.data.token, true);
-      
-    } catch(e) {
+
+    } catch (e) {
       console.log(e);
     }
   }

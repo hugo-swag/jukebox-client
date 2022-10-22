@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -10,11 +10,11 @@ const DELETE_URL = (id) => `${SERVER_URL}/api/v1/causes/${id}`;
 
 class CausesController {
 
-  constructor(user){
+  constructor(user) {
     this.user = user;
   }
 
-  async getCauses(){
+  async getCauses() {
     const resp = await axios.get(INDEX_URL());
     return resp.data;
   }
@@ -36,20 +36,20 @@ class Cause extends Component {
     super(props);
     this.onClickDelete = this.onClickDelete.bind(this);
   }
-  state = {  }
+  state = {}
   onClickDelete(e) {
     e.preventDefault();
     this.props.onDeleteCause(this.props.cause);
   }
-  render() { 
+  render() {
     return (
-      <div>
+      <div >
         Cause: {this.props.cause.name} <a href="#delete-cause" onClick={this.onClickDelete}>X</a>
       </div>
-      );
+    );
   }
 }
- 
+
 class Causes extends Component {
 
   constructor(props) {
@@ -61,49 +61,49 @@ class Causes extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     const causes = await this.controller.getCauses();
-    this.setState({...this.state, causes});
+    this.setState({ ...this.state, causes });
   }
 
-  async onClickCreateCause(){
+  async onClickCreateCause() {
     console.log('create cause', this.state.newCause);
 
-    const newCause = await this.controller.createCause({name: this.state.newCause});
-    this.setState({...this.state, addCauseOpen: false, causes: this.state.causes.concat([newCause])});
+    const newCause = await this.controller.createCause({ name: this.state.newCause });
+    this.setState({ ...this.state, addCauseOpen: false, causes: this.state.causes.concat([newCause]) });
   }
 
-  onClickNewCause(){
-    this.setState({...this.state, addCauseOpen: true})
+  onClickNewCause() {
+    this.setState({ ...this.state, addCauseOpen: true })
   }
 
   async onDeleteCause(cause) {
     await this.controller.deleteCause(cause);
     const causes = this.state.causes;
-    const idx = causes.findIndex((c)=> c.id === cause.id);
+    const idx = causes.findIndex((c) => c.id === cause.id);
     causes.splice(idx, 1);
-    this.setState({...this.state, causes});
+    this.setState({ ...this.state, causes });
   }
 
-  onChange(e){
+  onChange(e) {
     const value = e.target.value;
     const name = e.target.name;
-    this.setState({...this.state, [name]: value});
+    this.setState({ ...this.state, [name]: value });
   }
 
   state = { causes: [] }
 
-  render() { 
-    return ( <div>
+  render() {
+    return (<div>
       <h1>My Causes</h1>
       <ul>
-        {this.state.causes.map(cause=>(<Cause key={cause.id} onDeleteCause={this.onDeleteCause} cause={cause}/>))}
-        {this.state.addCauseOpen ? 
-           <><input type='text' onChange={this.onChange} name='newCause' placeholder='My Cause' /><button onClick={this.onClickCreateCause}> Submit </button></>
-         :<li onClick={this.onClickNewCause}> New Cause +</li>
+        {this.state.causes.map(cause => (<Cause key={cause.id} onDeleteCause={this.onDeleteCause} cause={cause} />))}
+        {this.state.addCauseOpen ?
+          <><input type='text' onChange={this.onChange} name='newCause' placeholder='My Cause' /><button onClick={this.onClickCreateCause}> Submit </button></>
+          : <li onClick={this.onClickNewCause}> New Cause +</li>
         }
       </ul>
-    </div> );
+    </div>);
   }
 
 }
